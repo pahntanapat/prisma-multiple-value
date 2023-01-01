@@ -22,7 +22,7 @@ model manyNullableColumns {
 
 //////////////////////////////////////////
 // pros - simple schema, different type
-// cons - unable to numeric comparision or computation
+// cons - unable to numeric comparision or computation, require parser and serializer
 enum valueType {
     integer
     float
@@ -44,7 +44,7 @@ model stringSerialize {
 ////////////////////////////////////////////
 // serialize value to JSON
 // pros - native support and may be efficient
-// cons - depend on DB, limited value type, unable to compute or compare value
+// cons - depend on DB, limited value type, unable to compute or compare value, require parser and serializer
 model jsonSerialize {
     id    String @id @default(uuid()) @db.Uuid
     // value
