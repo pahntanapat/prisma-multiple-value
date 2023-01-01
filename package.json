@@ -1,0 +1,42 @@
+{
+  "name": "prisma-multiple-value",
+  "version": "1.0.0",
+  "description": "This is example repo to show how to store different value type in one table",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"rimraf ./build ./bundle && prisma generate && tsc && esbuild ./build/src/index.js --platform=node --bundle --minify --outfile=bundle/index.js --analyze && cpy ./node_modules/.prisma/client/*.node ./node_modules/.prisma/client/*.prisma ./bundle "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pahntanapat/prisma-multiple-value.git"
+  },
+  "keywords": [
+    "Prisma.io"
+  ],
+  "author": "Tanapat Kahabodeekanokkul",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pahntanapat/prisma-multiple-value/issues"
+  },
+  "homepage": "https://github.com/pahntanapat/prisma-multiple-value#readme",
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.47.1",
+    "@typescript-eslint/parser": "^5.47.1",
+    "cpy-cli": "^4.2.0",
+    "dotenv": "^16.0.3",
+    "esbuild": "^0.16.12",
+    "eslint": "^8.31.0",
+    "husky": "^8.0.2",
+    "prettier": "^2.8.1",
+    "prettier-quick": "^0.0.5",
+    "prisma": "^4.8.0",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.8.0"
+  }
+}

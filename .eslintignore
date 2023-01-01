@@ -1,0 +1,10 @@
+build/
+built/
+node_modules/
+bundle/
+.vscode/
+.idea/
+prisma/
+.eslintrc.js
+jest.config.js
+webpack.config.js
