@@ -9,6 +9,8 @@ datasource db {
 }
 
 /////////////////////////////////////////
+// pros - simple schema
+// cons - space and size unefficiency
 
 model manyNullableColumns {
     id           String   @id @default(uuid()) @db.Uuid
@@ -19,7 +21,8 @@ model manyNullableColumns {
 }
 
 //////////////////////////////////////////
-
+// pros - simple schema, different type
+// cons - unable to numeric comparision or computation
 enum valueType {
     integer
     float
@@ -32,7 +35,6 @@ enum valueType {
 }
 
 model stringSerialize {
-    // pros - simple schema, different type,  cons - unable to numeric comparision
     id        String    @id @default(uuid()) @db.Uuid
     // value
     value     String?
@@ -40,15 +42,19 @@ model stringSerialize {
 }
 
 ////////////////////////////////////////////
+// serialize value to JSON
+// pros - native support and may be efficient
+// cons - depend on DB, limited value type, unable to compute or compare value
 model jsonSerialize {
-    // serialize value to JSON: pros - native support and may be efficient, cons - depend on DB, limited value type
     id    String @id @default(uuid()) @db.Uuid
     // value
     value Json?  @db.JsonB
 }
 
 ////////////////////////////////////////////////
-// Each table, each valueType
+// Each table, each valueType then links with store table by relation table
+// pros: may be space (disk) efficiency, comparable, computable
+// cons: numerous join table
 model stringHolder {
     id                        String                     @id @default(uuid()) @db.Uuid
     value                     String
@@ -107,7 +113,8 @@ model storeValue2 {
     storeValueToDecimalHolder storeValue2ToDecimalHolder[]
 }
 
-// example of unique table  strict 1:1
+// relation tables
+// example of unique relation table = strict 1:1
 model storeValue1ToStringHolder {
     // strict 1:1
     storeValueId   String       @unique @db.Uuid
